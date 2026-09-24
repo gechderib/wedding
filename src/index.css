@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme {
+  --font-amharic: 'Noto Serif Ethiopic', serif;
+  --font-elegant: 'Cinzel', serif;
+  --font-sans: 'Inter', sans-serif;
+  
+  --color-wedding-gold: #D4AF37;
+  --color-wedding-gold-light: #F3E5AB;
+  --color-wedding-red: #8B0000;
+  --color-wedding-red-dark: #5C0000;
+}
+
+@layer base {
+  body {
+    background-color: #fcfcfc;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+}
+
+.glass-panel-dark {
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.wedding-card {
+  width: 100%;
+  max-width: 5in;
+  /* Instead of aspect ratio which crops on small devices, we set a min-height.
+     5x7 ratio is 1:1.4. So for a max-width of 5in (480px), height should be 7in (672px). */
+  min-height: 7in; 
+  margin: 0 auto;
+}
+
+/* Print specific styles */
+@media print {
+  @page {
+    size: 5in 7in;
+    margin: 0; /* Important to avoid browser margins */
+  }
+  
+  body {
+    background: none !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  .print-page {
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-after: page;
+    break-inside: avoid;
+    display: block;
+    width: 5in;
+    height: 7in;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .print-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  /* Force exact dimensions for standard 5x7 wedding card */
+  .wedding-card {
+    width: 5in !important;
+    height: 7in !important;
+    min-height: 7in !important;
+    margin: 0 !important;
+    padding: 1.5in 0.5in !important; 
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide UI controls when printing */
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  /* Make sure text colors are exact */
+  .text-white { color: white !important; }
+  .text-gray-900 { color: #111827 !important; }
+  .text-wedding-gold { color: #D4AF37 !important; }
+}
+
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}
