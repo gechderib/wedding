@@ -28,10 +28,10 @@ function App() {
   const [brideName, setBrideName] = useState("ርብቃ ብርሃነ");
   const [invitingFamily, setInvitingFamily] = useState("መምህር ደርብ ጌቴ እና እናንየ ሞላ");
   const [verse, setVerse] = useState("እግዚአብሔር ያጣመረውን እንግዲህ ሰው አይለየው። (ማቴ ፲፱፥፮)");
-  const [weddingDate, setWeddingDate] = useState("እሑድ፣ ጥቅምት 12, 2017\nOct 22, 2024");
+  const [weddingDate, setWeddingDate] = useState("ቅዳሜ, መስከረም 23 2019\nSaturday, October 3 2026");
   const [weddingTime, setWeddingTime] = useState("ከሰዓት 6:00 ጀምሮ\n12:00 PM onwards");
-  const [weddingLocation, setWeddingLocation] = useState("ቦሌ መድኃኔዓለም ቤተክርስቲያን (Bole Medhanealem Church)");
-  const [mapLink, setMapLink] = useState("https://maps.app.goo.gl/BoleMedhanealem");
+  const [weddingLocation, setWeddingLocation] = useState("ቃሊቲ ቶታል (Kaliti Total)");
+  const [mapLink, setMapLink] = useState("https://maps.app.goo.gl/Vk8Cgm9zjrshFpqC8");
 
   // For preview, we just show the first guest or a placeholder
   const previewGuest = guests.length > 0 ? guests[0].name : 'የእንግዳ ስም (Guest Name)';
