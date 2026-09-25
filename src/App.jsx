@@ -278,8 +278,8 @@ function App() {
           <div className="text-xs text-gray-500 bg-gray-100 px-3 py-2 rounded-lg border border-gray-200 leading-tight text-center">
             <span className="font-semibold text-gray-700">{printCount}</span> cards
             <span className="mx-1 text-gray-400">·</span>
-            <span className="font-semibold text-gray-700">{pageCount}</span> pages
-            <div className="text-[10px] text-gray-400">{selectedLayout.subLabel}</div>
+            <span className="font-semibold text-gray-700">{pageCount}</span> sheets
+            <div className="text-[10px] text-gray-400">Front + back per sheet</div>
           </div>
 
           {/* Print Button */}
@@ -335,25 +335,32 @@ function App() {
       </div>
 
       {/* ── PRINT CONTENT ── */}
+      {/*
+        Page order: Front(1), Back(1), Front(2), Back(2) ...
+        This way when you enable "Print on both sides" (duplex) in the
+        printer dialog, each physical sheet gets the correct front+back.
+        10 cards = 10 sheets of 5x7 paper.
+      */}
       <div className={`print-only hidden ${layoutOption === 'double' ? 'print-layout-double' : ''}`}>
         {printGroups.map((group, gIdx) => (
-          <div key={gIdx} className={`print-page ${layoutOption === 'double' ? 'print-page-double' : ''}`}>
-            {group.map((_, cIdx) => (
-              <div key={cIdx} className={layoutOption === 'double' ? 'print-card-slot' : ''}>
-                <FrontCard isPreview={false} />
-              </div>
-            ))}
-          </div>
-        ))}
-        {/* Back pages */}
-        {printGroups.map((group, gIdx) => (
-          <div key={`back-${gIdx}`} className={`print-page ${layoutOption === 'double' ? 'print-page-double' : ''}`}>
-            {group.map((_, cIdx) => (
-              <div key={cIdx} className={layoutOption === 'double' ? 'print-card-slot' : ''}>
-                <BackCard />
-              </div>
-            ))}
-          </div>
+          <React.Fragment key={gIdx}>
+            {/* Front side */}
+            <div className={`print-page ${layoutOption === 'double' ? 'print-page-double' : ''}`}>
+              {group.map((_, cIdx) => (
+                <div key={cIdx} className={layoutOption === 'double' ? 'print-card-slot' : ''}>
+                  <FrontCard isPreview={false} />
+                </div>
+              ))}
+            </div>
+            {/* Back side — immediately follows its front for duplex */}
+            <div className={`print-page ${layoutOption === 'double' ? 'print-page-double' : ''}`}>
+              {group.map((_, cIdx) => (
+                <div key={cIdx} className={layoutOption === 'double' ? 'print-card-slot' : ''}>
+                  <BackCard />
+                </div>
+              ))}
+            </div>
+          </React.Fragment>
         ))}
       </div>
 

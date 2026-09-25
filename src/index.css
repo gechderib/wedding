@@ -53,9 +53,11 @@
 
 /* Print specific styles */
 @media print {
-  @page {
+  @page single-layout {
+    size: 5in 7in;
     margin: 0;
   }
+
 
   body {
     background: none !important;
@@ -74,6 +76,7 @@
     height: 7in;
     position: relative;
     overflow: hidden;
+    page: single-layout;
   }
 
   .print-page:last-child {
@@ -117,6 +120,7 @@
     height: 8.27in;
     padding: 0.63in 0.84in;
     box-sizing: border-box;
+    page: double-layout;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
