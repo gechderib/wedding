@@ -26,9 +26,9 @@ function App() {
   const [layoutOption, setLayoutOption] = useState('single');
 
   // Editable Card Details
-  const [groomName, setGroomName] = useState("ዲያቆን ደረጀ ደርብ");
+  const [groomName, setGroomName] = useState("የ ዲያቆን ደረጀ ደርብ");
   const [groomTitle, setGroomTitle] = useState("(እጩ ዶክተር)");
-  const [brideName, setBrideName] = useState("ወይዘሪት ርብቃ ብርሃነ");
+  const [brideName, setBrideName] = useState("የ ወይዘሪት ርብቃ ብርሃነ");
   const [invitingFamily, setInvitingFamily] = useState("መምህር ደርብ ጌቴ እና ወይዘሮ እናንየ ሞላ");
   const [verse, setVerse] = useState("እግዚአብሔር ያጣመረውን እንግዲህ ሰው አይለየው። (ማቴ ፲፱፥፮)");
   const [weddingDate, setWeddingDate] = useState("ቅዳሜ, መስከረም 23 2019\nSaturday, October 3 2026");
@@ -71,7 +71,7 @@ function App() {
   };
 
   const getAccentColor = () => {
-    if (selectedTemplate === 'teklil') return 'text-wedding-gold';
+    if (selectedTemplate === 'teklil') return 'text-white';
     if (selectedTemplate === 'minimal-gold') return 'text-[#b38728]';
     if (selectedTemplate === 'modern-dark') return 'text-gray-300';
     if (selectedTemplate === 'branna') return 'text-[#5d4037]';
@@ -112,19 +112,19 @@ function App() {
         {/* Names */}
         <div className="flex-1 flex flex-col justify-center items-center py-2">
           <h1 className={`text-xl sm:text-2xl lg:text-4xl font-bold leading-tight ${selectedTemplate === 'minimal-gold' ? 'text-[#b38728]' : ''}`}>
-            የ{groomName}
+            {groomName}
             {groomTitle && <span className="block text-sm sm:text-base lg:text-xl font-bold mt-1 opacity-95">{groomTitle}</span>}
           </h1>
           <div className={`text-lg sm:text-xl lg:text-2xl my-2 font-elegant ${getAccentColor()}`}>እና</div>
           <h1 className={`text-xl sm:text-2xl lg:text-4xl font-bold leading-tight ${selectedTemplate === 'minimal-gold' ? 'text-[#b38728]' : ''}`}>
-            የ{brideName}
+            {brideName}
           </h1>
         </div>
 
         <div className={`text-[10px] sm:text-xs lg:text-sm leading-relaxed ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>
           በእግዚአብሔር ፈቃድ የልጆቻችን ጋብቻ ስለምንፈጽም፣ በዚህ አስደሳች ቀን ተገኝታችሁ ደስታችንን እንድትካፈሉ በታላቅ አክብሮት ጠርተንዎታል።
           <div className="font-semibold mt-2 lg:mt-3 text-[10px] sm:text-xs lg:text-base">
-            ጠሪ፡ {invitingFamily}
+            አክባሪዎ፡ {invitingFamily}
           </div>
         </div>
 
